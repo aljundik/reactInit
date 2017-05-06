@@ -63,8 +63,9 @@ SelectLanguage.propTypes = {
     selectedLanguage: PropTypes.string.isRequired,
     onSelect: PropTypes.func.isRequired,
 };
-
+//create the Popular component
 class Popular extends React.Component {
+    //init the states of the app
     constructor(props) {
         super();
         this.state = {
@@ -72,7 +73,7 @@ class Popular extends React.Component {
             repos: null
         };
 
-
+        //after rendring update the state with the current language
         this.updateLanguage = this.updateLanguage.bind(this);
     }
 
@@ -105,8 +106,11 @@ class Popular extends React.Component {
         return (
             <div>
                 <SelectLanguage
+                // send props to the selectedLanguage function
                     selectedLanguage={this.state.selectedLanguage}
+                    //when selected, update the sates and the get the new api data
                     onSelect={this.updateLanguage} />
+                    
                 {!this.state.repos
                     ? <p>LOADING!</p>
                     : <RepoGrid repos={this.state.repos} />}
